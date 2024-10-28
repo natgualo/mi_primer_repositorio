@@ -7,6 +7,9 @@ library(BiocGenerics)
 library(BiocManager)
 library(Biostrings)
 library("msa")
+
+if
+
 Corynebacterium<-readAAStringSet("C:/Users/nat_g/OneDrive/Escritorio/Bioinfo/Archivo de secuencias2.txt")
 Corynebacterium
 letterFrequency(Corynebacterium,"A")
