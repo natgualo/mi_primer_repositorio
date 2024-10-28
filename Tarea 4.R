@@ -330,3 +330,37 @@ plot(A, main = "Frequencia de Alanina",
 Sq1<-as.character(Corynebacterium[[1]])
 sq2<-as.character(Corynebacterium[[2]])
 PairwiseAlignments(pattern = sq2, subject = Sq1)
+
+library(outbreaks)
+library(incidence)
+library(epiR)
+library(ggplot2)
+#con error relativo, usamos la función epi.sssimpleestb
+relativo<-epi.sssimpleestb(N = NA, Py = 0.35,epsilon = 0.035, error = "relative",se = 1,sp = 1,conf.level = 0.95)#el valor de epsilon lo cambiamos a 0.035 cuando queremos hacerlo con epsilon de la proporcion de 10% de 35%
+relativo
+### ahora con error absoluto
+absoluto<-epi.sssimpleestb(N = NA, Py = 0.35,epsilon = 0.035, error = "absolute",se = 1,sp = 1,conf.level = 0.95)
+absoluto
+#
+
+###prueba de detección
+relativo2<-epi.sssimpleestb(N=NA,Py = .35,epsilon = .1,error = "relative", se = 0.96,sp = 0.85,conf.level = 0.95)
+absoluto2<-epi.sssimpleestb(N=NA,Py = .35,epsilon = .1,error = "absolute", se = 0.96,sp = 0.85,conf.level = 0.95)
+relativo2
+absoluto2
+#población de riesgo
+riesgo3k<-epi.sssimpleestb(N = 3000,Py = 0.35,epsilon = .1,error = "absolute",se = 1, sp = 1,conf.level = .95)
+riesgo300<-epi.sssimpleestb(N = 300,Py = 0.35,epsilon = .1,error = "absolute",se = 1, sp = 1,conf.level = .95)
+riesgo3k
+riesgo300
+
+########ejercicio2
+tamaño<-epi.sscc(OR = 2, p1 = .3,p0 = .3,n = NA,power = 0.8,conf.level = 0.95, sided.test = 2)
+tamaño
+
+#ejercicio 3
+#parte 1
+epi.sscohortt(FT = 6,irexp1 = 0.005,irexp0 = 0.007,conf.level = 0.95,n = NA,r = 1,power = 0.8)
+#Ejercicio 3 500 gatos
+epi.sscohortt(FT = 6,irexp1 = 0.005,irexp0 = 0.007,conf.level = 0.95,n = 500,r = 1,power = NA)
+
