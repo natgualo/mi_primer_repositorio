@@ -364,3 +364,17 @@ epi.sscohortt(FT = 6,irexp1 = 0.005,irexp0 = 0.007,conf.level = 0.95,n = NA,r = 
 #Ejercicio 3 500 gatos
 epi.sscohortt(FT = 6,irexp1 = 0.005,irexp0 = 0.007,conf.level = 0.95,n = 500,r = 1,power = NA)
 
+
+
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install(version = "3.19")
+BiocManager::install("Biostrings")
+BiocManager::install("msa")
+
+library(msa)
+mySeqs<- readAAStringSet("DivergentGlobins.fasta")
+msa(mySeqs, method = c("ClustalOmega"))
+
+install.packages("ggmsa")
+BiocManager::install("ggmsa")
